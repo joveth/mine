@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+    <title>技能发动条件揭秘</title>
+    <link href="../bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+<style>
+    body {
+        background: #e0e0e0;
+    }
+
+    .ttd {
+        background: #EED8AE;
+    }
+
+    td {
+        text-align: center;
+        background: #fff;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+        border: 1px solid #080808;
+    }
+
+    ul {
+        list-style: none;
+        padding: 8px;
+        text-align: center;
+    }
+
+    ul li {
+        float: left;
+        text-align: center;
+        list-style: none;
+        margin: 3px;
+    }
+
+    .life-div {
+        background: #956336;
+        border: 1px solid #431C04;
+        border-radius: 6px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        line-height: 24px;
+        color: #fff;
+    }
+
+    h3 {
+        margin-bottom: 0.3em;
+        border-bottom: 1px solid #d75330;
+        border-left: 0.4em solid #d75330;
+        padding-left: 0.5em;
+        color: #555;
+        margin-top: 5px;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+    }
+</style>
+<body style="color:#000;padding:10px;">
+<div id="mw-content-text" lang="zh-CN" dir="ltr" class="mw-content-ltr">
+    <p>1、组合技优先于个人技发动</p>
+<p>2、技能发动率为各技能概率相加 （*）</p>
+<p>3、技能发动顺序与阵容位置有关，一般最后会用技能发动率高的佣兵弥补出普工的问题。</p>
+<p>4、多个同样组合下，组合技能只算1个</p>
+<p><br></p>
+<h2><span class="mw-headline" id=".E6.83.85.E6.99.AF1.EF.BC.9A">情景1：</span></h2>
+<p>第一阵容中只有<a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>和<a title="冒险与挖矿zero图鉴">Zero</a>；</p>
+<p><a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>个人技发动率3%，组合技发动率5%；</p>
+<p>系统从1-100中抽出一个随机数：</p>
+<p><br></p>
+<table class="wikitable mw-collapsible" style="text-align:center" width="100%">
+ <tbody>
+  <tr>
+   <td width="25%">假设随机数</td>
+   <td width="75%">发动结果</td>
+  </tr>
+  <tr>
+   <td>4</td>
+   <td>组合技</td>
+  </tr>
+  <tr>
+   <td>6</td>
+   <td>个人技</td>
+  </tr>
+  <tr>
+   <td>大于8</td>
+   <td>普通攻击</td>
+  </tr>
+ </tbody>
+</table>
+<p><br></p>
+<h2><span class="mw-headline" id=".E6.83.85.E6.99.AF2.EF.BC.9A">情景2：</span></h2>
+<p>第一阵容中只有<a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>、<a title="冒险与挖矿zero图鉴">Zero</a>、<a title="冒险与挖矿吕奉先图鉴">吕布</a>、<a title="冒险与挖矿貂蝉图鉴">貂蝉</a>；</p>
+<p>阵容排列顺序为<a title="冒险与挖矿zero图鉴">zero</a>、<a title="冒险与挖矿吕奉先图鉴">吕布</a>、<a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>、<a title="冒险与挖矿貂蝉图鉴">貂蝉</a>；</p>
+<p><a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>个人技发动率3%，组合技发动率5%；</p>
+<p>吕布个人技发动率为10%，组合技发动率5%；</p>
+<p>系统从1-100中抽出一个随机数：</p>
+<p><br></p>
+<table class="wikitable mw-collapsible" style="text-align:center" width="100%">
+ <tbody>
+  <tr>
+   <td width="25%">假设随机数</td>
+   <td width="75%">发动结果</td>
+  </tr>
+  <tr>
+   <td>4</td>
+   <td><a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>组合技</td>
+  </tr>
+  <tr>
+   <td>6</td>
+   <td><a title="冒险与挖矿吕奉先图鉴">吕布</a>组合技</td>
+  </tr>
+  <tr>
+   <td>12</td>
+   <td><a title="冒险与挖矿吕奉先图鉴">吕布</a>个人技</td>
+  </tr>
+  <tr>
+   <td>22</td>
+   <td><a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>个人技</td>
+  </tr>
+  <tr>
+   <td>大于23</td>
+   <td>普通攻击</td>
+  </tr>
+ </tbody>
+</table>
+<p><br>还有小编自己建的冒险与挖矿QQ交流群已建立，群号是<a target="_blank" class="external text">237456142</a>，希望各位小伙伴积极加入，如果有福利，随风会第一时间通知大家的，还不赶快加入这个大家庭啊！！</p>
+<!-- NewPP limit reportCPU time usage: 0.014 secondsReal time usage: 0.020 secondsPreprocessor visited node count: 16/1000000Preprocessor generated node count: 34/1000000Post‐expand include size: 195/2097152 bytesTemplate argument size: 0/2097152 bytesHighest expansion depth: 2/40Expensive parser function count: 0/100-->
+<!-- Transclusion expansion time report (%,ms,calls,template)100.00%    5.716      1 - -total100.00%    5.716      1 - 模板:首页-->
+<!-- Saved in parser cache with key mxwwiki:pcache:idhash:1163-0!*!0!!*!*!* and timestamp 20160419004103 and revision id 2036 -->
+<input type="hidden" name="mytoken" id="mytoken" value="41675737cd37a8c6f6416f035703def5">
+<input type="hidden" name="pageId" id="pageId" value="392460">
+</div>
+</body>
+</html>

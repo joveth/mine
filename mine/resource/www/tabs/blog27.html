@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+    <title>矿区战力四维表</title>
+    <link href="../bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+<style>
+    body {
+        background: #e0e0e0;
+    }
+
+    .ttd {
+        background: #EED8AE;
+    }
+
+    td {
+        text-align: center;
+        background: #fff;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+        border: 1px solid #080808;
+    }
+
+    ul {
+        list-style: none;
+        padding: 8px;
+        text-align: center;
+    }
+
+    ul li {
+        float: left;
+        text-align: center;
+        list-style: none;
+        margin: 3px;
+    }
+
+    .life-div {
+        background: #956336;
+        border: 1px solid #431C04;
+        border-radius: 6px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        line-height: 24px;
+        color: #fff;
+    }
+
+    h3 {
+        margin-bottom: 0.3em;
+        border-bottom: 1px solid #d75330;
+        border-left: 0.4em solid #d75330;
+        padding-left: 0.5em;
+        color: #555;
+        margin-top: 5px;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+    }
+</style>
+<body style="color:#000;padding:10px;">
+<div id="mw-content-text" lang="zh-CN" dir="ltr" class="mw-content-ltr">
+    <p><br></p>
+<table class="wikitable" style="text-align:center" width="100%">
+ <tbody>
+  <tr>
+   <th>等级</th>
+   <th>战力</th>
+   <th>先攻</th>
+   <th>防御</th>
+   <th>闪避</th>
+   <th>王者</th>
+   <th>掉落</th>
+  </tr>
+  <tr>
+   <td>lv1</td>
+   <td>4500</td>
+   <td>5</td>
+   <td>5</td>
+   <td>0</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv10</td>
+   <td>18500</td>
+   <td>8</td>
+   <td>15</td>
+   <td>0</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv20</td>
+   <td>53500</td>
+   <td>8</td>
+   <td>25</td>
+   <td>10</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv30</td>
+   <td>250000</td>
+   <td>10</td>
+   <td>35</td>
+   <td>20</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>漆黑魔铁巨像（lv39后刷新）</td>
+   <td>850000</td>
+   <td>20</td>
+   <td>100</td>
+   <td>0</td>
+   <td>0</td>
+   <td>雕像*2</td>
+  </tr>
+  <tr>
+   <td>lv40</td>
+   <td>550000</td>
+   <td>10</td>
+   <td>45</td>
+   <td>30</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv50</td>
+   <td>850000</td>
+   <td>10</td>
+   <td>55</td>
+   <td>40</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>真以太狩猎团（lv59后刷新）</td>
+   <td>1450000</td>
+   <td>30</td>
+   <td>55</td>
+   <td>90</td>
+   <td>0</td>
+   <td>随机魂晶*1</td>
+  </tr>
+  <tr>
+   <td>lv60</td>
+   <td>1150000</td>
+   <td>10</td>
+   <td>60</td>
+   <td>50</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv70</td>
+   <td>1450000</td>
+   <td>10</td>
+   <td>70</td>
+   <td>57</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>赤之王（lv79后刷新）</td>
+   <td>2500000</td>
+   <td>20</td>
+   <td>120</td>
+   <td>100</td>
+   <td>0</td>
+   <td>随机魂晶*4</td>
+  </tr>
+  <tr>
+   <td>lv80</td>
+   <td>1750000</td>
+   <td>5</td>
+   <td>80</td>
+   <td>60</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv90</td>
+   <td>2050000</td>
+   <td>0</td>
+   <td>90</td>
+   <td>70</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>碧之王（lv99后刷新）</td>
+   <td>3000000</td>
+   <td>20</td>
+   <td>250</td>
+   <td>0</td>
+   <td>0</td>
+   <td>四种魂晶*2</td>
+  </tr>
+  <tr>
+   <td>lv100</td>
+   <td>2550000</td>
+   <td>0</td>
+   <td>110</td>
+   <td>80</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv110</td>
+   <td>3358000</td>
+   <td>0</td>
+   <td>110</td>
+   <td>100</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>光之王（lv119后刷新）</td>
+   <td>4200000</td>
+   <td>30</td>
+   <td>199</td>
+   <td>90</td>
+   <td>0</td>
+   <td>随机魂晶*8~9</td>
+  </tr>
+  <tr>
+   <td>lv120</td>
+   <td>4178000</td>
+   <td>0</td>
+   <td>120</td>
+   <td>120</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv130</td>
+   <td>4998000</td>
+   <td>0</td>
+   <td>130</td>
+   <td>120</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>影之王（lv139后刷新）</td>
+   <td>5740000</td>
+   <td>299</td>
+   <td>0</td>
+   <td>999</td>
+   <td>0</td>
+   <td>四种魂晶*4</td>
+  </tr>
+  <tr>
+   <td>lv140</td>
+   <td>5818000</td>
+   <td>0</td>
+   <td>140</td>
+   <td>120</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv150</td>
+   <td>6638000</td>
+   <td>0</td>
+   <td>150</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv160</td>
+   <td>7458000</td>
+   <td>0</td>
+   <td>160</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv170</td>
+   <td>8278000</td>
+   <td>0</td>
+   <td>170</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>大地天使（lv179后刷新）</td>
+   <td>800000</td>
+   <td>150</td>
+   <td>200</td>
+   <td>100</td>
+   <td>0</td>
+   <td>巨魔雕像，随机魂晶，时间之砂*1~3</td>
+  </tr>
+  <tr>
+   <td>lv180</td>
+   <td>9098000</td>
+   <td>0</td>
+   <td>180</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv190</td>
+   <td>9918000</td>
+   <td>0</td>
+   <td>180</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv200</td>
+   <td>10738000</td>
+   <td>0</td>
+   <td>190</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>时间使者（lv209后刷新）</td>
+   <td>15000000</td>
+   <td>0</td>
+   <td>999</td>
+   <td>100</td>
+   <td>30</td>
+   <td>时间砂，各类魂晶总数20左右</td>
+  </tr>
+  <tr>
+   <td>lv210</td>
+   <td>11658000</td>
+   <td>0</td>
+   <td>200</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv220</td>
+   <td>12670000</td>
+   <td>10</td>
+   <td>210</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv230</td>
+   <td>13498000</td>
+   <td>0</td>
+   <td>220</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv240</td>
+   <td>14418000</td>
+   <td>20</td>
+   <td>230</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv250</td>
+   <td>15338000</td>
+   <td>20</td>
+   <td>240</td>
+   <td>150</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>末日之主（lv259后刷新）</td>
+   <td>25000000</td>
+   <td>90</td>
+   <td>600</td>
+   <td>299</td>
+   <td>50</td>
+   <td>时间砂，4类魂晶各数个</td>
+  </tr>
+  <tr>
+   <td>lv260</td>
+   <td>16258000</td>
+   <td>20</td>
+   <td>250</td>
+   <td>242</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv270</td>
+   <td>17178000</td>
+   <td>20</td>
+   <td>250</td>
+   <td>242</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv280</td>
+   <td>18098000</td>
+   <td>20</td>
+   <td>260</td>
+   <td>250</td>
+   <td>0</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv290</td>
+   <td>19018000</td>
+   <td>20</td>
+   <td>270</td>
+   <td>250</td>
+   <td>5</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv300</td>
+   <td>19938000</td>
+   <td>20</td>
+   <td>280</td>
+   <td>250</td>
+   <td>10</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv310</td>
+   <td>20858000</td>
+   <td>20</td>
+   <td>290</td>
+   <td>260</td>
+   <td>15</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv320</td>
+   <td>21778000</td>
+   <td>20</td>
+   <td>300</td>
+   <td>260</td>
+   <td>20</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv330</td>
+   <td>22698000</td>
+   <td>20</td>
+   <td>310</td>
+   <td>260</td>
+   <td>25</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>烬之泉神（lv339后刷新）</td>
+   <td>39986000</td>
+   <td>115</td>
+   <td>50</td>
+   <td>400</td>
+   <td>75</td>
+   <td>时间砂，随机三种宝箱钥匙数个</td>
+  </tr>
+  <tr>
+   <td>lv350</td>
+   <td>24538000</td>
+   <td>20</td>
+   <td>330</td>
+   <td>260</td>
+   <td>35</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv360</td>
+   <td>25508000</td>
+   <td>20</td>
+   <td>330</td>
+   <td>260</td>
+   <td>40</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv370</td>
+   <td>26528000</td>
+   <td>20</td>
+   <td>340</td>
+   <td>260</td>
+   <td>40</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv380</td>
+   <td>27548000</td>
+   <td>20</td>
+   <td>350</td>
+   <td>260</td>
+   <td>50</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv390</td>
+   <td>30368000</td>
+   <td>30</td>
+   <td>360</td>
+   <td>260</td>
+   <td>50</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>森文督姆（lv399后刷新）</td>
+   <td>75000000</td>
+   <td>55</td>
+   <td>100</td>
+   <td>500</td>
+   <td>110</td>
+   <td>契约石，时间砂，随机合成材料数个</td>
+  </tr>
+  <tr>
+   <td>lv410</td>
+   <td>39486000</td>
+   <td>40</td>
+   <td>380</td>
+   <td>305</td>
+   <td>60</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv420</td>
+   <td>51560000</td>
+   <td>40</td>
+   <td>390</td>
+   <td>305</td>
+   <td>60</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv430</td>
+   <td>56760000</td>
+   <td>40</td>
+   <td>400</td>
+   <td>305</td>
+   <td>60</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv440</td>
+   <td>61960000</td>
+   <td>50</td>
+   <td>400</td>
+   <td>305</td>
+   <td>60</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv450</td>
+   <td>67160000</td>
+   <td>50</td>
+   <td>410</td>
+   <td>320</td>
+   <td>60</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv460</td>
+   <td>72360000</td>
+   <td>50</td>
+   <td>420</td>
+   <td>320</td>
+   <td>60</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv470</td>
+   <td>77560000</td>
+   <td>50</td>
+   <td>430</td>
+   <td>320</td>
+   <td>60</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv480</td>
+   <td>82760000</td>
+   <td>50</td>
+   <td>440</td>
+   <td>320</td>
+   <td>75</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv490</td>
+   <td>87960000</td>
+   <td>70</td>
+   <td>450</td>
+   <td>340</td>
+   <td>75</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>lv500</td>
+   <td>93160000</td>
+   <td>70</td>
+   <td>460</td>
+   <td>340</td>
+   <td>75</td>
+   <td></td>
+  </tr>
+ </tbody>
+</table>
+<p><br><b>备注1：</b>当前矿区四维表只更新至四王结束，同时杂兵数据默认只显示逢10的数据，如果要查询详细可取消隐藏。</p>
+<p><b>备注2：</b>在打掉指定lv的杂兵后，对应的boss会在附近刷新，多走走多看看，找到后2小时不打会消失。</p>
+<!-- NewPP limit reportCPU time usage: 0.020 secondsReal time usage: 0.026 secondsPreprocessor visited node count: 6/1000000Preprocessor generated node count: 26/1000000Post‐expand include size: 177/2097152 bytesTemplate argument size: 0/2097152 bytesHighest expansion depth: 2/40Expensive parser function count: 0/100-->
+<!-- Transclusion expansion time report (%,ms,calls,template)100.00%    5.589      1 - -total100.00%    5.589      1 - 模板:首页-->
+<!-- Saved in parser cache with key mxwwiki:pcache:idhash:1786-0!*!*!*!*!*!* and timestamp 20160418041941 and revision id 9460 -->
+<input type="hidden" name="mytoken" id="mytoken" value="bc720f80f3f2463c01e9c2473954dbd4">
+<input type="hidden" name="pageId" id="pageId" value="403834">
+</div>
+</body>
+</html>

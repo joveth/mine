@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+    <title>合战关卡怪物属性表</title>
+    <link href="../bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+<style>
+    body {
+        background: #e0e0e0;
+    }
+
+    .ttd {
+        background: #EED8AE;
+    }
+
+    td {
+        text-align: center;
+        background: #fff;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+        border: 1px solid #080808;
+    }
+
+    ul {
+        list-style: none;
+        padding: 8px;
+        text-align: center;
+    }
+
+    ul li {
+        float: left;
+        text-align: center;
+        list-style: none;
+        margin: 3px;
+    }
+
+    .life-div {
+        background: #956336;
+        border: 1px solid #431C04;
+        border-radius: 6px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        line-height: 24px;
+        color: #fff;
+    }
+
+    h3 {
+        margin-bottom: 0.3em;
+        border-bottom: 1px solid #d75330;
+        border-left: 0.4em solid #d75330;
+        padding-left: 0.5em;
+        color: #555;
+        margin-top: 5px;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+    }
+</style>
+<body style="color:#000;padding:10px;">
+<div id="mw-content-text" lang="zh-CN" dir="ltr" class="mw-content-ltr">
+    <p><br></p>
+<p><br></p>
+<table style="text-align:center" width="100%" class="table table-bordered">
+ <tbody>
+  <tr>
+   <th>回合</th>
+   <th>怪物</th>
+   <th>战力</th>
+   <th>先攻</th>
+   <th>防御</th>
+   <th>闪避</th>
+   <th>王者</th>
+   <th>技能1</th>
+   <th>技能2</th>
+   <th>技能3</th>
+   <th>技能4</th>
+   <th>赛点</th>
+   <th>赛点合计</th>
+   <th>经验</th>
+   <th>经验合计</th>
+  </tr>
+  <tr>
+   <td>1</td>
+   <td>三喵军团</td>
+   <td>800000</td>
+   <td>0</td>
+   <td>0</td>
+   <td>0</td>
+   <td>0</td>
+   <td>抢东西吃</td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td>10</td>
+   <td>10</td>
+   <td>10</td>
+   <td>10</td>
+  </tr>
+  <tr>
+   <td>2</td>
+   <td>狂乱犬星人</td>
+   <td>1000000</td>
+   <td>5</td>
+   <td>5</td>
+   <td>15</td>
+   <td>5</td>
+   <td>恐吓</td>
+   <td>怒火之吠</td>
+   <td></td>
+   <td></td>
+   <td>12</td>
+   <td>22</td>
+   <td>12</td>
+   <td>22</td>
+  </tr>
+  <tr>
+   <td>3</td>
+   <td>合战卫士</td>
+   <td>900000</td>
+   <td>10</td>
+   <td>20</td>
+   <td>10</td>
+   <td>10</td>
+   <td>夺命尖刺</td>
+   <td>守护者之力</td>
+   <td></td>
+   <td></td>
+   <td>14</td>
+   <td>36</td>
+   <td>14</td>
+   <td>36</td>
+  </tr>
+  <tr>
+   <td>4</td>
+   <td>精英合战卫士</td>
+   <td>950000</td>
+   <td>25</td>
+   <td>15</td>
+   <td>15</td>
+   <td>15</td>
+   <td>盾墙</td>
+   <td>盾墙II</td>
+   <td>守护者之护</td>
+   <td>列阵冲刺</td>
+   <td>16</td>
+   <td>52</td>
+   <td>16</td>
+   <td>52</td>
+  </tr>
+  <tr>
+   <td>5</td>
+   <td>合战巨魔</td>
+   <td>1150000</td>
+   <td>23</td>
+   <td>23</td>
+   <td>23</td>
+   <td>20</td>
+   <td>碾碎</td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td>50</td>
+   <td>102</td>
+   <td>50</td>
+   <td>102</td>
+  </tr>
+  <tr>
+   <td>6</td>
+   <td>黄色顽石群</td>
+   <td>1200000</td>
+   <td>25</td>
+   <td>25</td>
+   <td>25</td>
+   <td>25</td>
+   <td>碾碎</td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td>20</td>
+   <td>122</td>
+   <td>20</td>
+   <td>122</td>
+  </tr>
+  <tr>
+   <td>7</td>
+   <td>黑色顽石群</td>
+   <td>1250000</td>
+   <td>30</td>
+   <td>30</td>
+   <td>40</td>
+   <td>30</td>
+   <td>巨石暴风雨</td>
+   <td>巨石暴风雨II</td>
+   <td>巨石轰爆</td>
+   <td></td>
+   <td>22</td>
+   <td>144</td>
+   <td>22</td>
+   <td>144</td>
+  </tr>
+  <tr>
+   <td>8</td>
+   <td>合战卫士</td>
+   <td>1300000</td>
+   <td>35</td>
+   <td>45</td>
+   <td>35</td>
+   <td>35</td>
+   <td>夺命尖刺</td>
+   <td>守护者之力</td>
+   <td></td>
+   <td></td>
+   <td>24</td>
+   <td>168</td>
+   <td>24</td>
+   <td>168</td>
+  </tr>
+  <tr>
+   <td>9</td>
+   <td>精英合战卫士</td>
+   <td>1350000</td>
+   <td>50</td>
+   <td>40</td>
+   <td>40</td>
+   <td>40</td>
+   <td>盾墙</td>
+   <td>盾墙II</td>
+   <td>守护者之护</td>
+   <td>列阵冲刺</td>
+   <td>28</td>
+   <td>196</td>
+   <td>28</td>
+   <td>196</td>
+  </tr>
+  <tr>
+   <td>10</td>
+   <td>合战吞噬者</td>
+   <td>1400000</td>
+   <td>48</td>
+   <td>48</td>
+   <td>48</td>
+   <td>45</td>
+   <td>火焰龙车</td>
+   <td>龙之深吸</td>
+   <td></td>
+   <td></td>
+   <td>50</td>
+   <td>246</td>
+   <td>50</td>
+   <td>246</td>
+  </tr>
+  <tr>
+   <td>11</td>
+   <td>黄色顽石群</td>
+   <td>1450000</td>
+   <td>51</td>
+   <td>51</td>
+   <td>51</td>
+   <td>55</td>
+   <td>碾碎</td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td>30</td>
+   <td>276</td>
+   <td>30</td>
+   <td>276</td>
+  </tr>
+  <tr>
+   <td>12</td>
+   <td>黑色顽石群</td>
+   <td>1500000</td>
+   <td>57</td>
+   <td>57</td>
+   <td>67</td>
+   <td>65</td>
+   <td>巨石暴风雨</td>
+   <td>巨石暴风雨II</td>
+   <td>巨石轰爆</td>
+   <td></td>
+   <td>32</td>
+   <td>308</td>
+   <td>32</td>
+   <td>308</td>
+  </tr>
+  <tr>
+   <td>13</td>
+   <td>合战卫士</td>
+   <td>1550000</td>
+   <td>63</td>
+   <td>73</td>
+   <td>63</td>
+   <td>75</td>
+   <td>夺命尖刺</td>
+   <td>守护者之力</td>
+   <td></td>
+   <td></td>
+   <td>34</td>
+   <td>342</td>
+   <td>34</td>
+   <td>342</td>
+  </tr>
+  <tr>
+   <td>14</td>
+   <td>精英合战卫士</td>
+   <td>1600000</td>
+   <td>79</td>
+   <td>69</td>
+   <td>69</td>
+   <td>85</td>
+   <td>盾墙</td>
+   <td>盾墙II</td>
+   <td>守护者之护</td>
+   <td>列阵冲刺</td>
+   <td>38</td>
+   <td>380</td>
+   <td>38</td>
+   <td>380</td>
+  </tr>
+  <tr>
+   <td>15</td>
+   <td>伪以太军团</td>
+   <td>1650000</td>
+   <td>78</td>
+   <td>78</td>
+   <td>78</td>
+   <td>105</td>
+   <td>升级！</td>
+   <td>以太猎刀</td>
+   <td>奇迹突进</td>
+   <td></td>
+   <td>60</td>
+   <td>440</td>
+   <td>50</td>
+   <td>430</td>
+  </tr>
+  <tr>
+   <td>16</td>
+   <td>黄色顽石群</td>
+   <td>1700000</td>
+   <td>81</td>
+   <td>81</td>
+   <td>81</td>
+   <td>120</td>
+   <td>碾碎</td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td>40</td>
+   <td>480</td>
+   <td>40</td>
+   <td>470</td>
+  </tr>
+  <tr>
+   <td>17</td>
+   <td>黑色顽石群</td>
+   <td>1750000</td>
+   <td>87</td>
+   <td>87</td>
+   <td>97</td>
+   <td>135</td>
+   <td>巨石暴风雨</td>
+   <td>巨石暴风雨II</td>
+   <td>巨石轰爆</td>
+   <td></td>
+   <td>42</td>
+   <td>522</td>
+   <td>42</td>
+   <td>512</td>
+  </tr>
+  <tr>
+   <td>18</td>
+   <td>合战卫士</td>
+   <td>1800000</td>
+   <td>93</td>
+   <td>103</td>
+   <td>93</td>
+   <td>150</td>
+   <td>夺命尖刺</td>
+   <td>守护者之力</td>
+   <td></td>
+   <td></td>
+   <td>44</td>
+   <td>566</td>
+   <td>44</td>
+   <td>556</td>
+  </tr>
+  <tr>
+   <td>19</td>
+   <td>精英合战卫士</td>
+   <td>1850000</td>
+   <td>109</td>
+   <td>99</td>
+   <td>99</td>
+   <td>165</td>
+   <td>盾墙</td>
+   <td>盾墙II</td>
+   <td>守护者之护</td>
+   <td>列阵冲刺</td>
+   <td>48</td>
+   <td>614</td>
+   <td>48</td>
+   <td>604</td>
+  </tr>
+  <tr>
+   <td>20</td>
+   <td>致命蛇妖</td>
+   <td>1900000</td>
+   <td>108</td>
+   <td>108</td>
+   <td>108</td>
+   <td>180</td>
+   <td>石化凝视</td>
+   <td>石化凝视II</td>
+   <td>惊悚恸哭</td>
+   <td></td>
+   <td>80</td>
+   <td>694</td>
+   <td>50</td>
+   <td>654</td>
+  </tr>
+  <tr>
+   <td>21</td>
+   <td>黄色顽石群</td>
+   <td>1950000</td>
+   <td>115</td>
+   <td>115</td>
+   <td>115</td>
+   <td>185</td>
+   <td>碾碎</td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td>52</td>
+   <td>746</td>
+   <td>52</td>
+   <td>706</td>
+  </tr>
+  <tr>
+   <td>22</td>
+   <td>黑色顽石群</td>
+   <td>2000000</td>
+   <td>125</td>
+   <td>125</td>
+   <td>135</td>
+   <td>200</td>
+   <td>巨石暴风雨</td>
+   <td>巨石暴风雨II</td>
+   <td>巨石轰爆</td>
+   <td></td>
+   <td>54</td>
+   <td>800</td>
+   <td>54</td>
+   <td>760</td>
+  </tr>
+  <tr>
+   <td>23</td>
+   <td>合战卫士</td>
+   <td>2050000</td>
+   <td>135</td>
+   <td>145</td>
+   <td>135</td>
+   <td>215</td>
+   <td>夺命尖刺</td>
+   <td>守护者之力</td>
+   <td></td>
+   <td></td>
+   <td>56</td>
+   <td>856</td>
+   <td>56</td>
+   <td>816</td>
+  </tr>
+  <tr>
+   <td>24</td>
+   <td>精英合战卫士</td>
+   <td>2100000</td>
+   <td>155</td>
+   <td>145</td>
+   <td>145</td>
+   <td>230</td>
+   <td>盾墙</td>
+   <td>盾墙II</td>
+   <td>守护者之护</td>
+   <td>列阵冲刺</td>
+   <td>58</td>
+   <td>914</td>
+   <td>58</td>
+   <td>874</td>
+  </tr>
+  <tr>
+   <td>25</td>
+   <td>合战巨龙</td>
+   <td>2150000</td>
+   <td>158</td>
+   <td>158</td>
+   <td>158</td>
+   <td>245</td>
+   <td>削骨俯冲</td>
+   <td>巨龙灵气</td>
+   <td>裂心巨吼</td>
+   <td></td>
+   <td>100</td>
+   <td>1014</td>
+   <td>70</td>
+   <td>944</td>
+  </tr>
+  <tr>
+   <td>26</td>
+   <td>黄色顽石群</td>
+   <td>2200000</td>
+   <td>165</td>
+   <td>165</td>
+   <td>165</td>
+   <td>260</td>
+   <td>碾碎</td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td>60</td>
+   <td>1074</td>
+   <td>60</td>
+   <td>1004</td>
+  </tr>
+  <tr>
+   <td>27</td>
+   <td>黑色顽石群</td>
+   <td>2250000</td>
+   <td>175</td>
+   <td>175</td>
+   <td>185</td>
+   <td>275</td>
+   <td>巨石暴风雨</td>
+   <td>巨石暴风雨II</td>
+   <td>巨石轰爆</td>
+   <td></td>
+   <td>62</td>
+   <td>1136</td>
+   <td>62</td>
+   <td>1066</td>
+  </tr>
+  <tr>
+   <td>28</td>
+   <td>合战卫士</td>
+   <td>2300000</td>
+   <td>185</td>
+   <td>195</td>
+   <td>185</td>
+   <td>290</td>
+   <td>夺命尖刺</td>
+   <td>守护者之力</td>
+   <td></td>
+   <td></td>
+   <td>64</td>
+   <td>1200</td>
+   <td>64</td>
+   <td>1130</td>
+  </tr>
+  <tr>
+   <td>29</td>
+   <td>精英合战卫士</td>
+   <td>2350000</td>
+   <td>205</td>
+   <td>195</td>
+   <td>195</td>
+   <td>305</td>
+   <td>盾墙</td>
+   <td>盾墙II</td>
+   <td>守护者之护</td>
+   <td>列阵冲刺</td>
+   <td>70</td>
+   <td>1270</td>
+   <td>70</td>
+   <td>1200</td>
+  </tr>
+  <tr>
+   <td>30</td>
+   <td>合战巨龙II</td>
+   <td>2400000</td>
+   <td>210</td>
+   <td>210</td>
+   <td>210</td>
+   <td>320</td>
+   <td>大末日</td>
+   <td>急速龙车</td>
+   <td>痛苦轮回II</td>
+   <td>痛苦轮回</td>
+   <td>200</td>
+   <td>1470</td>
+   <td>100</td>
+   <td>1300</td>
+  </tr>
+ </tbody>
+</table>
+<!-- NewPP limit reportCPU time usage: 0.028 secondsReal time usage: 0.046 secondsPreprocessor visited node count: 8/1000000Preprocessor generated node count: 36/1000000Post‐expand include size: 1328/2097152 bytesTemplate argument size: 0/2097152 bytesHighest expansion depth: 2/40Expensive parser function count: 0/100-->
+<!-- Transclusion expansion time report (%,ms,calls,template)100.00%   11.737      1 - -total 48.11%    5.647      1 - 模板:更多WIKI资料 47.33%    5.555      1 - 模板:首页-->
+<!-- Saved in parser cache with key mxwwiki:pcache:idhash:2368-0!*!0!*!*!*!* and timestamp 20160417150419 and revision id 9354 -->
+<input type="hidden" name="mytoken" id="mytoken" value="162f466a8e7561857d0483d80c7da069">
+<input type="hidden" name="pageId" id="pageId" value="456650">
+</div>
+</body>
+</html>

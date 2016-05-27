@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+    <title>数据流之矿区详解</title>
+    <link href="../bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+<style>
+    body {
+        background: #e0e0e0;
+    }
+
+    .ttd {
+        background: #EED8AE;
+    }
+
+    td {
+        text-align: center;
+        background: #fff;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+        border: 1px solid #080808;
+    }
+
+    ul {
+        list-style: none;
+        padding: 8px;
+        text-align: center;
+    }
+
+    ul li {
+        float: left;
+        text-align: center;
+        list-style: none;
+        margin: 3px;
+    }
+
+    .life-div {
+        background: #956336;
+        border: 1px solid #431C04;
+        border-radius: 6px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        line-height: 24px;
+        color: #fff;
+    }
+
+    h3 {
+        margin-bottom: 0.3em;
+        border-bottom: 1px solid #d75330;
+        border-left: 0.4em solid #d75330;
+        padding-left: 0.5em;
+        color: #555;
+        margin-top: 5px;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+    }
+</style>
+<body style="color:#000;padding:10px;">
+<div id="mw-content-text" lang="zh-CN" dir="ltr" class="mw-content-ltr">
+    <p><br></p>
+<h2><span class="mw-headline" id=".E5.BC.95.E8.A8.80">引言</span></h2>
+<p>本次给大家带来的攻略较为高级，如有闲的X疼的小伙伴们可以一起研究探讨（伸手党可直接拉到文末看结论）</p>
+<p><br>鉴于不少人不爱看长篇大论，把结论放到最前面：</p>
+<p><br><b>疑问和结论：</b></p>
+<p><br>1.Q：我没有那么多龙马、骑士王，也堆不出这么多防御闪避，怎么办？</p>
+<p><br>A：说明你还没有达到构建矿队的硬标准，重置矿区即可。</p>
+<p><br>2.关于模拟器</p>
+<p><br>模拟器是本人自主开发的，本次使用的是针对矿区特化的版本。图是用外部软件做的。</p>
+<p><br>3.矿区的背景知识请参阅熊霸3的攻略</p>
+<p><br>4.给伸手党的结论：</p>
+<p><br>230等级之前不需要先攻，230等级后需要20先攻，387等级后需要30先攻；300等级后需要王者，最终以接近60王者为目标。</p>
+<p><br>5-6龙马的矿队比较安稳，太少胜率低，太多浪费。</p>
+<p><br>带1-2个<a title="冒险与挖矿觉醒的薰图鉴">觉醒的薰</a>可以有效提高胜率，优于带<a title="冒险与挖矿爵士凯图鉴">爵士凯</a>，甚至优于<a title="冒险与挖矿zero图鉴">zero</a>。</p>
+<p><br>防御和闪避的收益基本相同，最好是防闪相等。</p>
+<p><br>以下正文</p>
+<p><br>大家好，我又来了。大家如果有读过我之前两篇攻略的话，大概会发现我是比较篇数据流的玩家。于是今天我带大家以数据流的观点走进PVE的殿堂，矿区。</p>
+<p><br>首先，要讲一下数据流眼中的对战胜负。其实数据流并不关心一场战斗的胜负，我们关心的只是——胜率。说到率，就会有赢有输，99%的胜率也难保不会阴沟翻船，但胜率的最大化可以让我们在矿区尽可能的如鱼得水，有最完美的推图体验。冒险与挖矿这款游戏的战斗中，虽然有着一些随机数，比如技能骰子、闪避概率等，但也仅仅如此罢了，一场战斗的胜率其实完全是双方阵容的技能列表和四维所决定的。因此，要得知一场战斗的胜率，比如能否打过矿兵lv100、200、400，我们只需要有自己的阵容、矿兵的数据和技能算法即可。关于技能算法我不想再赘述，是按顺序的圆桌概率，讲过很多次了。因此得知了矿区敌人的数据，我们就可以调配出合适的阵容和四维而战胜之。</p>
+<p><br>矿区的敌人有3种：魔铁杂兵、魇魔、Boss。截止至投稿日，魔铁杂兵等级为1~400，魇魔等级为1~20，boss有9个。本文第一章先来分析魔铁杂兵，第二章分析魇魔，第三章分析各个Boss，最后一章为矿区杂谈。</p>
+<p><br></p>
+<h2><span class="mw-headline" id=".E7.9F.BF.E5.8C.BA.E6.9D.82.E5.85.B5">矿区杂兵</span></h2>
+<h3><span class="mw-headline" id=".E6.9D.82.E5.85.B5.E6.95.B0.E6.8D.AE">杂兵数据</span></h3>
+<p>魔铁杂兵的战力及属性变化如下图（图1）。</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解.png" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A3.png" width="300" height="225" srcset="http://joymepic.joyme.com/wiki/images/mxw/4/4f/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A3.png?imageView/1/w/450/h/338/v=201604181243 1.5x, http://joymepic.joyme.com/wiki/images/mxw/4/4f/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A3.png?imageView/1/w/600/h/450/v=201604181243 2x">
+ </div>
+</div>
+<p><br>从图中可以看出，杂兵的防御、闪避都是随等级程阶梯形式增加的。在杂兵等级超过100以后，战力上升速度骤增，同时先攻降为0。到了200级以后，开始出现若干10先攻的杂兵；到了230级以后，开始稳定20先攻，到了387级后稳定30先攻。王者则是lv300以后才会出现，到400级时增长至60。</p>
+<p><br>接下来看一下矿兵的技能。</p>
+<table class="wikitable" style="text-align:center" width="100%">
+ <tbody>
+  <tr>
+   <th colspan="2">矿区杂兵1-400级的技能列表</th>
+  </tr>
+  <tr>
+   <th width="30%">等级</th>
+   <th width="70%">技能（按顺序）</th>
+  </tr>
+  <tr>
+   <td>1-49</td>
+   <td>碾碎</td>
+  </tr>
+  <tr>
+   <td>50-99</td>
+   <td>碾碎、末日燃烧、末日燃烧</td>
+  </tr>
+  <tr>
+   <td>100-140</td>
+   <td>碾碎、末日燃烧、末日燃烧、黑暗复原</td>
+  </tr>
+  <tr>
+   <td>141-350</td>
+   <td>碾碎、末日燃烧、末日燃烧、上古神秘之力</td>
+  </tr>
+  <tr>
+   <td>351-400</td>
+   <td>上古神秘之力、碾碎、末日燃烧、末日燃烧、碾碎</td>
+  </tr>
+ </tbody>
+</table>
+<p><br></p>
+<table class="wikitable" style="text-align:center" width="100%">
+ <tbody>
+  <tr>
+   <th colspan="4">矿区杂兵的技能效果及发动率</th>
+  </tr>
+  <tr>
+   <th width="20%">技能</th>
+   <th width="20%">发动率</th>
+   <th width="10%">次数限制</th>
+   <th width="50%">效果</th>
+  </tr>
+  <tr>
+   <td>碾碎</td>
+   <td>20%</td>
+   <td>15</td>
+   <td>140%普通伤害</td>
+  </tr>
+  <tr>
+   <td>末日燃烧</td>
+   <td>13%</td>
+   <td>15</td>
+   <td>150%暴击伤害，无法闪避</td>
+  </tr>
+  <tr>
+   <td>黑暗复原</td>
+   <td>30%（条件触发）</td>
+   <td>1</td>
+   <td>血量30%以下触发，恢复量是敌方40%的总战力</td>
+  </tr>
+  <tr>
+   <td>上古神秘之力</td>
+   <td>80%（条件触发）</td>
+   <td>1</td>
+   <td>血量20%以下触发，恢复量是己方60%的总战力</td>
+  </tr>
+ </tbody>
+</table>
+<ul>
+ <li>30%血量以下的触发条件为估测值</li>
+</ul>
+<p><br>有了以上数据，我们就可以模拟矿区战斗的胜率了。下面来看一下矿队构成。</p>
+<p><br></p>
+<h3><span class="mw-headline" id=".E7.9F.BF.E9.98.9F.E6.9E.84.E6.88.90">矿队构成</span></h3>
+<p>什么是矿队？大家都知道是恢复、龙马、堆防闪，但是对于矿队构成的核心并不清楚，新手的矿队大多存在问题。这一节我们先大致给出矿队的几个硬指标，然后在下一节仔细讨论收益。</p>
+<p>首先，众所周知矿队需要恢复，但是要哪些种呢？一共有4种类型的恢复如下：</p>
+<p>（1）按照敌人总战力恢复，代表卡：<a title="冒险与挖矿梦魇狂三图鉴">狂三</a>、<a title="冒险与挖矿玉兔图鉴">玉兔</a></p>
+<p>（2）按照敌人的当前战力恢复，代表卡：<a title="冒险与挖矿坂本龙马图鉴">坂本龙马</a>（紫）、<a title="冒险与挖矿艾瑞尔米亚图鉴">艾瑞尔米亚</a>（蓝）</p>
+<p>（3）按照己方的总战力恢复，代表卡：<a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>、<a title="冒险与挖矿爱伦图鉴">爱伦</a>、<a title="冒险与挖矿圣女贞德图鉴">圣女贞德</a></p>
+<p>（4）按照己方的当前战力恢复，代表卡：<a title="冒险与挖矿觉醒的薰图鉴">觉醒的薰</a>、<a title="冒险与挖矿爵士凯图鉴">爵士凯</a>（蓝）</p>
+<p><br>从图1中可以看出，矿区杂兵的血量从100级以后就开始飙升直至30M，可以因为敌方的战力比己方高太多，所以，按照己方的总战力恢复的卡是没有用的，首选卡应该是按照敌方总战力恢复的卡，其次是按照敌方当前战力恢复的卡。然而，按照地方总战力恢复的卡数量较少且概率较低，为了保证恢复概率，我们只能用龙马（20%）铺满概率。注意，每一种恢复卡的技能释放次数都是只有4次，所以单纯铺满概率还不一定够，打到后面战力很高的杂兵，可能会出现技能次数不够用，因此需要6张以上的这种恢复卡；另一个解决方法就是在龙马后面放置按照己方当前战力的恢复卡，因为当技能打完是，己方当前战力也已经很高，这种卡的收益非常大。</p>
+<p><br>需要注意的是，如果同时带了<a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>和zero，那么他们的合体技能魔王与魔女会优先进入技能队列，也就是说总有5%的概率打出我们不想要的按照己方总战力恢复的技能。这种技能一出就要跪，为了胜率，还是尽可能不要带<a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>。当然，如果zero卡不够多，那么组合的6点防闪还是相当可观。但不要把<a title="冒险与挖矿披萨魔女图鉴">披萨魔女</a>放在龙马前面！</p>
+<p><br>其次，矿队还需要一定的输出。从图1中可以看到矿兵的防御和闪避都是急速增长，所以普通的增伤技能和暴击技能打出的伤害并不高，只有纯粹伤害才是输出的选择。选择纯粹输出的要点，一个是保证技能概率，一个是保证技能次数。所以，<a title="冒险与挖矿老子图鉴">老子</a>、<a title="冒险与挖矿夫子图鉴">夫子</a>、<a title="冒险与挖矿吉尔加美蛇图鉴">吉尔伽美蛇</a>这种纯粹就不要用了，并不能有效输出。可以选择的卡有<a title="冒险与挖矿骑士王图鉴">骑士王</a>、<a title="冒险与挖矿扫地僧图鉴">扫地僧</a>、<a title="冒险与挖矿高杉晋作图鉴">高杉晋作</a>、<a title="冒险与挖矿甩葱少女图鉴">甩葱少女</a>、<a title="冒险与挖矿纳兹古王图鉴">纳兹古王</a>、<a title="冒险与挖矿奥丁图鉴">奥丁</a>等。一般2-3张即可，20卡槽建议1-2张，卡槽多了建议3张。</p>
+<p><br>第三，先攻。还是看图1，在230级别之前，先攻应该大于0；在230-387级别之间，先攻应大于20；如果想要稳定打400级别的矿兵，先攻最好大于30。</p>
+<p><br>第四，王者。可以看出300等级以后的矿兵开始带有王者。由于矿兵没有纯粹技能，所以王者对于矿队其实相当于对矿兵的防御，所以对方矿兵的王者差提升，相当于己方的防御下降，这时候提升防御和提升王者的收益其实是差不多的。所以如果懒得提升王者，那就多多提升一些防御吧。</p>
+<p><br></p>
+<h3><span class="mw-headline" id=".E7.9F.BF.E9.98.9F.E8.83.9C.E7.8E.87.E7.A0.94.E7.A9.B6">矿队胜率研究</span></h3>
+<h4><span class="mw-headline" id=".E7.9F.BF.E9.98.9F.E7.A4.BA.E4.BE.8B">矿队示例</span></h4>
+<p>我们先来直观的看一下矿队的进化情况。图中给出的是示例，均不是矿队的完成结构。</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解1.png" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A31.png" width="300" height="167" srcset="http://joymepic.joyme.com/wiki/images/mxw/b/bf/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A31.png?imageView/1/w/450/h/251/v=201604181243 1.5x, http://joymepic.joyme.com/wiki/images/mxw/b/bf/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A31.png?imageView/1/w/450/h/251/v=201604181243 2x">
+ </div>
+</div>
+<p><br>图2. 矿队示例。（左，阵容1）20卡槽版；（中，阵容2）22卡槽版；（右，阵容3）25卡槽版。</p>
+<p><br>技能排列顺序为：恢复敌方总战力、恢复敌方当前战力、恢复己方当前战力、纯粹、其他。为了研究这三个示例阵容究竟能够打败多少等级的杂兵，作者进行了模拟，每个等级杂兵以100场胜负计算胜率，得到结果如图3所示。</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解2.png" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A32.png" width="300" height="225" srcset="http://joymepic.joyme.com/wiki/images/mxw/0/07/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A32.png?imageView/1/w/450/h/338/v=201604181243 1.5x, http://joymepic.joyme.com/wiki/images/mxw/0/07/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A32.png?imageView/1/w/600/h/450/v=201604181243 2x">
+ </div>
+</div>
+<p><br>可以看出，阵容1在140等级处有明显胜率下降，这是由于140等级后杂兵增加了上古神秘之力技能。其后，又在200过后产生波动，于230等级处继续下降，这是由于230等级的矿兵有20先攻。阵容2增加了一个开宝具的朱雀，使得先攻满20，因此在等级300以前胜率都较为平稳，而过了300等级后胜率开始迅速下降，这是由于300等级后的杂兵开始增加王者。相比起来，矿队3利用最后3个格子补充了王者，虽然防御下降了一些，但依然可以以较为稳定的胜率打到杂兵等级400。</p>
+<p><br>下面我们分别看一下各种属性对于矿队的胜率影响。</p>
+<p><br></p>
+<h4><span class="mw-headline" id=".E9.BE.99.E9.A9.AC.E6.8A.80.E8.83.BD.E6.95.B0.E9.87.8F.E5.BD.B1.E5.93.8D">龙马技能数量影响</span></h4>
+<p>矿队4维固定为30先攻，100防御，100闪避，50王者，4龙马+薰+3个骑士王，剩下3个空位，战力固定为2M。对比组为（a）加3个zero；（b）加2个zero，1个龙马；（c）加1个zero，2个龙马；（d）加3个龙马。其中每个zero（未开宝具、未突破）相当于+8点防御和+8点闪避。胜率如下图：</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解3.png" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A33.png" width="300" height="225" srcset="http://joymepic.joyme.com/wiki/images/mxw/f/fa/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A33.png?imageView/1/w/450/h/338/v=201604181243 1.5x, http://joymepic.joyme.com/wiki/images/mxw/f/fa/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A33.png?imageView/1/w/600/h/451/v=201604181243 2x">
+ </div>
+</div>
+<p><br>可以看出，4龙马果然还是不够的，起码要5只龙马在场才能维持对高等级杂兵的胜率；而6龙马和5龙马相差并不大，特别指出，这里第6只龙马是换掉了zero才导致胜率持平，如果换掉星美、机器猫等，还是比较划算的；而6龙马以上则没有什么大用，反而会导致胜率下降。</p>
+<p><br></p>
+<h4><span class="mw-headline" id=".E6.81.A2.E5.A4.8D.E5.B7.B1.E6.96.B9.E5.BD.93.E5.89.8D.E6.88.98.E5.8A.9B.E5.8D.A1.E5.AF.B9.E8.83.9C.E7.8E.87.E7.9A.84.E5.BD.B1.E5.93.8D">恢复己方当前战力卡对胜率的影响</span></h4>
+<p>情况1：战力固定2M，4维固定30先攻，120防御，120闪避，50王者，5龙马+3<a title="冒险与挖矿骑士王图鉴">骑士王</a>，1个空位（这个空位在龙马后面、骑士王前面）。（a）放一个zero，+8防御+8闪避；（b）放一张薰；（c）放一张爵士凯；（d）放一个狂三（闪避+9）。胜率如下图：</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解4.png" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A34.png" width="300" height="225" srcset="http://joymepic.joyme.com/wiki/images/mxw/2/25/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A34.png?imageView/1/w/450/h/338/v=201604181243 1.5x, http://joymepic.joyme.com/wiki/images/mxw/2/25/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A34.png?imageView/1/w/600/h/451/v=201604181243 2x">
+ </div>
+</div>
+<p><br>可以看出，5龙马3<a title="冒险与挖矿骑士王图鉴">骑士王</a>时，一个觉醒的薰对胜率的提升是最高的，其次是<a title="冒险与挖矿爵士凯图鉴">爵士凯</a>，狂三和zero则略逊一筹。不难理解薰优于<a title="冒险与挖矿爵士凯图鉴">爵士凯</a>，这是由于后期当龙马技能打完时，需要大概率的恢复技能才能保证自己血量的连续上升，而爵士凯只有12%的技能率，并不能保证连续恢复。因此，如果选择<a title="冒险与挖矿爵士凯图鉴">爵士凯</a>，可以带2张，但这样会影响卡数，降低防御和闪避。</p>
+<p><br>情况2：战力固定2M，30先攻，112防御，112闪避，50王者，5龙马+3骑士王，2个空位（空位在龙马后面，骑士王前面）。（a）两张薰；（b）zero+薰；（c）两张爵士凯。胜率如下图。</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解5.png" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A35.png" width="300" height="229" srcset="http://joymepic.joyme.com/wiki/images/mxw/3/3b/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A35.png?imageView/1/w/450/h/345/v=201604181243 1.5x, http://joymepic.joyme.com/wiki/images/mxw/3/3b/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A35.png?imageView/1/w/600/h/459/v=201604181243 2x">
+ </div>
+</div>
+<p><br>注意到(b)例就是我们情况1中讨论的胜率最高的例子（图6为了查看方便，将坐标轴进行了调整）。然而，如果再替换一张卡，则(b)例反而成了胜率最低的例子；同时，2张薰带来的提升，大于2张<a title="冒险与挖矿爵士凯图鉴">爵士凯</a>的提升。所以，薰在这类中等级矿队中的作用是大于爵士凯的。</p>
+<p><br></p>
+<h4><span class="mw-headline" id=".E9.98.B2.E5.BE.A1.E3.80.81.E9.97.AA.E9.81.BF.E5.80.BC.E7.9A.84.E5.BD.B1.E5.93.8D">防御、闪避值的影响</span></h4>
+<p>固定战力2M，四维初始为先攻30，防御80，闪避80，王者50，阵容为5个坂本龙马+2个<a title="冒险与挖矿觉醒的薰图鉴">觉醒的薰</a>+3个骑士王，2个空位。（a）放两个亚瑟，防御+32；（b）放一个亚瑟一个zero，防御+24，闪避+8；（c）放两个zero，防御+16，闪避+16；（d）放两个兵长，防御+0，闪避+26。胜率如下图</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解6.png" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A36.png" width="300" height="248" srcset="http://joymepic.joyme.com/wiki/images/mxw/7/76/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A36.png?imageView/1/w/450/h/372/v=201604181243 1.5x, http://joymepic.joyme.com/wiki/images/mxw/7/76/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A36.png?imageView/1/w/600/h/496/v=201604181243 2x">
+ </div>
+</div>
+<p><br>可以看出防御和闪避的收益基本没什么差别，硬要说的话，防御闪避平均一点似乎胜率比较高。</p>
+<p><br></p>
+<h4><span class="mw-headline" id=".E7.8E.8B.E8.80.85.E7.9A.84.E5.BD.B1.E5.93.8D">王者的影响</span></h4>
+<p>王者只对杂兵等级超过300有显著影响。篇幅关系，这里只做简述。王者低于50时胜率会显著降低，这里提高王者的收益要大于提高相同防御的收益。证明如下：由于矿队的王者不会高于矿兵的王者，设原始王者差为y，原始防御为z，比较兑换x点王者到x点防御的收益w为</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解13.png" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A313.png" width="300" height="87">
+ </div>
+</div>
+<p><br> 显然，当y&gt;z时，收益为正，y&lt;z时，收益为负。矿队中，王者差大于防御的情况实在罕见，因此收益总是为负的，固矿队应尽量减小王者差，以王者等于杂兵的王者时为最优。400级杂兵的王者值为60，因此如果想打到400等级，最优的配置为60王者。</p>
+<p><br></p>
+<h2><span class="mw-headline" id=".E6.9C.AC.E7.AB.A0.E5.B0.8F.E7.BB.93">本章小结</span></h2>
+<p>通过阵容分析和数值计算的胜率分析，本章得出几个结论：</p>
+<p><br>（1）以杂兵为主的矿队阵容顺序应该为：按照敌方总血量恢复、按照敌方当前血量恢复、按照己方当前血量恢复、纯粹输出。不要带按照己方总血量恢复的卡。纯粹输出不用太多，但不能一张也没有。</p>
+<p><br>（2）230等级之前不需要先攻，230等级后需要20先攻，387等级后需要30先攻；300等级后需要王者，最终以接近60王者为目标。</p>
+<p><br>（3）5-6龙马的矿队比较安稳，太少胜率低，太多浪费。</p>
+<p><br>（4）带1-2个觉醒的薰可以有效提高胜率，优于带爵士凯，甚至优于zero。</p>
+<p><br>（5）防御和闪避的收益基本相同，最好是防闪相等。</p>
+<p><br></p>
+<h2><span class="mw-headline" id=".E9.99.84.E5.BD.951.EF.BC.9A.E7.9F.BF.E9.98.9F.E8.B5.8F.E6.9E.90"><b>附录1：矿队赏析</b></span></h2>
+<p>之前讨论的都是不成型的矿队，现在给大家看看成型的养养眼~~</p>
+<p><br>先来一个麻果大神的战力500万的矿队</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解7.jpg" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A37.jpg" width="300" height="369">
+ </div>
+</div>
+<p><br>这矿队打矿的胜率给大家show一下，是这样滴：</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解8.png" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A38.png" width="300" height="207" srcset="http://joymepic.joyme.com/wiki/images/mxw/7/77/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A38.png?imageView/1/w/450/h/311/v=201604181243 1.5x, http://joymepic.joyme.com/wiki/images/mxw/7/77/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A38.png?imageView/1/w/600/h/415/v=201604181243 2x">
+ </div>
+</div>
+<p><br>看，这条直线！</p>
+<p><br>然后是恢复流开山代表飞鸟的矿队</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解9.jpg" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A39.jpg" width="300" height="533" srcset="http://joymepic.joyme.com/wiki/images/mxw/8/80/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A39.jpg?imageView/1/w/450/h/800/v=201604181243 1.5x, http://joymepic.joyme.com/wiki/images/mxw/8/80/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A39.jpg?imageView/1/w/450/h/800/v=201604181243 2x">
+ </div>
+</div>
+<p><br>这矿队先攻不够啊！然而不愧是恢复流的代表人物，被人打习惯了后手，已经忘了还可以先手这件事情~战力优势情况下，这个矿队只有打390级以上的时候才会出现点问题，后手什么的完全不care啊。</p>
+<p><br>咳咳，最后上个本人目前使用的矿队。恩恩恩。</p>
+<p><br></p>
+<div class="center">
+ <div class="floatnone">
+  <img alt="冒险与挖矿数据流之矿区详解10.png" src="E58692E999A9E4B88EE68C96E79FBFE695B0E68DAEE6B581E4B98BE79FBFE58CBAE8AFA6E8A7A310.png" width="300" height="499" srcset="http://joymepic.joyme.com/wiki/images/mxw/4/40/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A310.png?imageView/1/w/450/h/748/v=201604181243 1.5x, http://joymepic.joyme.com/wiki/images/mxw/4/40/%E5%86%92%E9%99%A9%E4%B8%8E%E6%8C%96%E7%9F%BF%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B9%8B%E7%9F%BF%E5%8C%BA%E8%AF%A6%E8%A7%A310.png?imageView/1/w/450/h/748/v=201604181243 2x">
+ </div>
+</div>
+<p><br>当然到了后期，主队实力上去了，尤其是走纯粹王者流的土豪们，直接主队换龙马就是优秀的矿队，战力属性完全碾压的状态下，胜率什么都是浮云。</p>
+<h2><span class="mw-headline" id=".E9.99.84.E5.BD.952.EF.BC.9A.E9.98.B2.E5.BE.A1.E9.97.AA.E9.81.BF.E8.83.BD.E8.B5.B0.E5.88.B0.E7.9A.84.E5.85.B3.E5.8D.A1.E5.AF.B9.E5.BA.94.E8.A1.A8"><b>附录2：防御闪避能走到的关卡对应表</b></span></h2>
+<p>本表中数据以5龙马、1-2觉醒的薰、20%纯粹输出（2骑士王、或2高杉晋作，或扫地僧+初音等）为基础。可以打到的等级标准为连续5次胜率小于30%则停止。</p>
+<p><br></p>
+<table class="wikitable" style="text-align:center" width="100%">
+ <tbody>
+  <tr>
+   <th>战力</th>
+   <th>先攻</th>
+   <th>防御</th>
+   <th>闪避</th>
+   <th>王者</th>
+   <th>薰</th>
+   <th>可以打到的等级</th>
+   <th>400级杂兵胜率</th>
+  </tr>
+  <tr>
+   <td>600K</td>
+   <td>0</td>
+   <td>70</td>
+   <td>70</td>
+   <td>0</td>
+   <td>1</td>
+   <td>85</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>600K</td>
+   <td>0</td>
+   <td>75</td>
+   <td>75</td>
+   <td>0</td>
+   <td>1</td>
+   <td>109</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>600K</td>
+   <td>0</td>
+   <td>80</td>
+   <td>80</td>
+   <td>0</td>
+   <td>1</td>
+   <td>140</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>900K</td>
+   <td>0</td>
+   <td>80</td>
+   <td>80</td>
+   <td>10</td>
+   <td>1</td>
+   <td>140</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>900K</td>
+   <td>20</td>
+   <td>90</td>
+   <td>90</td>
+   <td>10</td>
+   <td>1</td>
+   <td>164</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>900K</td>
+   <td>20</td>
+   <td>100</td>
+   <td>100</td>
+   <td>10</td>
+   <td>1</td>
+   <td>273</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>1.5M</td>
+   <td>20</td>
+   <td>110</td>
+   <td>110</td>
+   <td>20</td>
+   <td>1</td>
+   <td>344</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>1.5M</td>
+   <td>20</td>
+   <td>120</td>
+   <td>120</td>
+   <td>30</td>
+   <td>2</td>
+   <td>387</td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>1.5M</td>
+   <td>30</td>
+   <td>110</td>
+   <td>110</td>
+   <td>40</td>
+   <td>2</td>
+   <td>400</td>
+   <td>35%</td>
+  </tr>
+  <tr>
+   <td>2M</td>
+   <td>30</td>
+   <td>120</td>
+   <td>120</td>
+   <td>40</td>
+   <td>2</td>
+   <td>400</td>
+   <td>70%</td>
+  </tr>
+  <tr>
+   <td>2M</td>
+   <td>30</td>
+   <td>120</td>
+   <td>120</td>
+   <td>50</td>
+   <td>2</td>
+   <td>400</td>
+   <td>90%</td>
+  </tr>
+  <tr>
+   <td>2M</td>
+   <td>30</td>
+   <td>130</td>
+   <td>130</td>
+   <td>50</td>
+   <td>2</td>
+   <td>400</td>
+   <td>97%</td>
+  </tr>
+  <tr>
+   <td>3M</td>
+   <td>30</td>
+   <td>140</td>
+   <td>140</td>
+   <td>60</td>
+   <td>2</td>
+   <td>400</td>
+   <td>100%</td>
+  </tr>
+ </tbody>
+</table>
+<h2><span class="mw-headline" id=".E9.99.84.E5.BD.953"><b>附录3</b></span></h2>
+<p>1.Q：我没有那么多<a title="冒险与挖矿坂本龙马图鉴">坂本龙马</a>、<a title="冒险与挖矿骑士王图鉴">骑士王</a>，也堆不出这么多防御闪避，怎么办？</p>
+<p><br>A：说明你还没有达到构建矿队的硬标准，重置矿区即可。</p>
+<p><br>2.关于模拟器</p>
+<p><br>模拟器是本人自主开发的，本次使用的是针对矿区特化的版本。图是用外部软件做的。</p>
+<p><br>3.矿区的背景知识请参阅熊霸3的攻略</p>
+<p><br>4.给伸手党的结论：</p>
+<p><br>230等级之前不需要先攻，230等级后需要20先攻，387等级后需要30先攻；300等级后需要王者，最终以接近60王者为目标。</p>
+<p><br>5-6龙马的矿队比较安稳，太少胜率低，太多浪费。</p>
+<p><br>带1-2个<a title="冒险与挖矿觉醒的薰图鉴">觉醒的薰</a>可以有效提高胜率，优于带<a title="冒险与挖矿爵士凯图鉴">爵士凯</a>，甚至优于zero。</p>
+<p><br>防御和闪避的收益基本相同，最好是防闪相等。</p>
+<!-- NewPP limit reportCPU time usage: 0.079 secondsReal time usage: 0.162 secondsPreprocessor visited node count: 64/1000000Preprocessor generated node count: 82/1000000Post‐expand include size: 195/2097152 bytesTemplate argument size: 0/2097152 bytesHighest expansion depth: 2/40Expensive parser function count: 0/100-->
+<!-- Transclusion expansion time report (%,ms,calls,template)100.00%    6.332      1 - -total100.00%    6.332      1 - 模板:首页-->
+<!-- Saved in parser cache with key mxwwiki:pcache:idhash:2038-0!*!0!!*!5!* and timestamp 20160418044346 and revision id 7301 -->
+<input type="hidden" name="mytoken" id="mytoken" value="f6e480246256ec24712d8408cf399214">
+<input type="hidden" name="pageId" id="pageId" value="409077">
+</div>
+</body>
+</html>
